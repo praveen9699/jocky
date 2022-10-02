@@ -1,0 +1,21 @@
+.content {
+    text-align: center;
+    
+}
+.title {
+    text-align: center;
+}
+.box-border{
+    overflow: hidden;
+    height: 20px;
+}
+.sortList{
+    margin-left: 81.2%;
+}
+.thickness{
+    background-color: rgb(211, 201, 201);
+    border-radius: 25px;
+}
+button:hover{
+    background-color: gray;
+}

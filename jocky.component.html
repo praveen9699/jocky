@@ -1,0 +1,80 @@
+<div> 
+  <h1 class="title">
+    <span>T-Shirts for Men</span>
+    <small>({{count}} Items)</small>
+  </h1>
+      <div *ngFor="let item of Facets" class="content">
+         <button class="thickness"   (click)="removeFilter(item)">{{item.Title}}   x</button>
+      </div>
+  <div class="row">
+    <div class="sortList">
+       <span>SORT BY PRICE:
+          <select (change)="sortingOrder($event)" >
+            <option value="popular">Popular </option>
+            <option value="price-low-to-high"> Low to high </option>
+            <option value="price-high-to-low"> High to low </option>
+            <option value="bestseller">Best seller </option>
+          </select>
+       </span>
+   </div>
+    <div class="col-4">
+      <h3>FILTER  BY</h3>
+      <h3>FIT TYPE</h3>
+    <div *ngIf="fecetData !=undefined && fecetData !=null">
+      <div *ngFor="let item of fecetData.fittype">
+        <input type="checkbox" (click)="addFilter(item, $event)" [attr.checked]="Facets.indexOf(item) > -1 ? '' : null">
+        <span> {{item.Title}} </span>
+
+      </div>
+      <h3>SIZE</h3>
+          <div *ngFor="let item of fecetData.size">
+            <input type="checkbox"  (click)="addFilter(item,$event)" >
+            <span> {{item.Title}} </span> 
+          </div>
+      <h3> COLOR</h3>
+          <div *ngFor="let item of fecetData.color">
+            <input type="checkbox"  (click)="addFilter(item,$event)">
+            <span> {{item.Title}} </span> 
+          </div>
+      <h3>FABRIC</h3>
+          <div *ngFor="let item of fecetData.fabric">
+            <input type="checkbox" (click)="addFilter(item,$event)">
+            <span> {{item.Title}} </span> 
+          </div>
+      <h3>SLEEVE</h3>
+          <div *ngFor="let item of fecetData.sleeve">
+            <input type="checkbox"  (click)="addFilter(item,$event)">
+            <span> {{item.Title}} </span> 
+          </div>
+    </div>
+    </div>
+      <div class="col-8 ">
+        <div *ngIf="fecetData !=undefined && fecetData !=null">
+        <div *ngFor="let chunk of chunkedData" class="row">
+          <div  *ngFor="let item of chunk" class="col-4">
+            <div (mouseenter)="item.hover=true" (mouseleave)="item.hover=false">
+              <div class="row">
+                <img src="{{item.activeImageUrl||item.ListImagePath+item.Images.split('|')[0]}}">
+              </div>
+              <div *ngIf="!item.hover" class="row">
+                <p>{{item.ProductTitle}}</p>
+                <p>{{item.ColorName}}</p>
+                <p>{{item.StyleName}}</p>
+                <p>₹{{item.MRP}}</p>
+                <p>{{item.AvailableSizes}}</p>
+              </div>
+              <div *ngIf="item.hover">
+                <div class="row">
+                  <div class="col-1" *ngFor=" let smallimg of item.ProductDetails">
+                    <img (mouseover)="changeImg(item.ProductId,smallimg.ColorName)" src="{{ smallimg.ColorSmallImagePath}}" style="height: 20px;width: 20px;">
+                  </div>
+                </div>
+                <div class="row">₹{{item.MRP}}</div>
+              </div>
+            </div>
+          </div>
+       </div>
+      </div>
+    </div>
+</div>
+</div>
