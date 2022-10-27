@@ -1,0 +1,20 @@
+.container{
+    margin-left: 40%;
+}
+.text-style{
+    text-emphasis-color: red;
+}
+.danger{
+    color: red;
+}
+
+table, th, td {
+    border: 1px solid rgb(9, 30, 128);
+  
+  }
+ 
+  .space
+  {
+      background-color:rgb(164, 228, 164);
+  }
+  
